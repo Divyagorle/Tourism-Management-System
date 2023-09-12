@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<title>Tour Package Creation</title>
+		<style>
+			input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+	  textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
+	  td{
+		font-weight: bold;
+	  }
+	  input[type="file"] {
+        display: block;
+        margin: 20px auto;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
+	  .form-submit {
+      background-color: Dodgerblue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+	 table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .form-submit {
+			  background-color: DodgerBlue;
+			  color: white;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  border: none;
+			  font-size: 16px;
+			  cursor: pointer;
+			  transition: all 0.2s ease-in-out;
+		}
+		</style>
+	</head>
+	<body>
+		<h1><center>Issue</center></h1>
+		{%if role=='user'%}
+		<form action='/issue_raise' method='POST' target='rframe'>
+			<table>
+				<tr>
+					<td>About the Issue:<textarea name='issue_on' cols='100' rows='3'></textarea></td>
+				<tr>
+			</table>
+			<input type='submit' value='submit' style='float:right' class='form-submit'/>
+		</form><br>
+		<hr>
+		{% endif %}
+		<table>
+			<tr>
+				<th>Issue_id</th>
+				<th>username</th>
+				<th>description</th>
+				<th>Raised_on</th>
+			</tr>
+			{% for i in l%}
+			<tr>
+				<td>{{i[0]}}</td>
+				<td>{{i[1]}}</td>
+				<td>{{i[2]}}</td>
+				<td>{{i[3]}}</td>
+			</tr>
+			{% endfor %}	
+		</table>
+	</body>
+</html>

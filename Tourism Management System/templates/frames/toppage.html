@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tourism Management System</title>
+    <style>
+      /* Main container */
+      .container {
+        width: 98%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      /* Logo */
+      .logo {
+        width: 100px;
+        height: auto;
+        margin-left: 20px;
+      }
+      
+      /* Navigation */
+      nav {
+        display: flex;
+        align-items: center;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      nav li {
+        margin-right: 20px;
+      }
+      nav a {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: Orange;
+      }
+    </style>
+  </head>
+  <body style='background-color:black;color:white'>
+    <header >
+      <div class="container" style='border:6px solid black;'>
+        <img src="{{url_for('static', filename='/logo.jpg')}}" alt="Tourism Management System Logo" class="logo">
+		<h1>Tourism Management System </h1>
+        <nav>
+          <ul>
+            <li><a href="/index/home" target='bframe'>Home</a></li>
+            <li><a href="/index/about_us" target='bframe'>About Us</a></li>
+            <li><a href="/index/help" target='bframe'>Contact</a></li>
+            <li><a href="/login/admin" target='bframe'>Admin</a></li>
+            <li><a href="/login/user" target='bframe'>User</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

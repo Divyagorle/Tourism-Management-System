@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>Payment Page</title>
+	</head>
+	<body>
+		<center><h1>Payment Page</h1></center>
+		<h3>Personal Details:</h3>
+		<table border="1px solid black" width='500px' height='20px'>
+				<tr>
+					<th>Name:</th>
+					<td>{{data[0]}}</td>
+				</tr
+				<tr>
+					<th>Gender:</th>
+					<td>{{data[1]}}</td>
+				</tr>
+				<tr>
+					<th>Date of birth:</th>
+					<td>{{data[2]}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number:</th>
+					<td>{{data[3]}}</td>
+				</tr>
+				<tr>
+					<th>Mail Id:</th>
+					<td>{{data[4]}}</td>
+				</tr>
+		</table>
+		<br>
+		<h3>Package Details:</h3>
+		<table border="1px solid black">
+				<tr>
+					<th>Photo:</th>
+					<td><img src="{{url_for('static', filename='/packageimage/'+package[7])}}" width="150px" height="60px"/></td>
+				</tr>
+				<tr>
+					<th>Package Name:</th>
+					<td>{{package[1]}}</td>
+				</tr>
+				<tr>
+					<th>Package Type:</th>
+					<td>{{package[2]}}</td>
+				</tr>
+				<tr>
+					<th>Locations:</th>
+					<td>{{package[3]}}</td>
+				</tr>
+				<tr>
+					<th>Price:</th>
+					<td>{{package[4]}}</td>
+				</tr>
+				<tr>
+					<th>Features:</th>
+					<td>{{package[5]}}</td>
+				</tr>
+				<tr>
+					<th>Details:</th>
+					<td>{{package[6]}}</td>
+				</tr>
+		</table>
+		<br>
+		<form action='/pay/{{package[0]}}' method='POST' target='rframe'>
+			From Date:
+			<input type='date' name='fromdate' />
+			To Date:
+			<input type='date' name='todate'/>
+			<input type='submit' value='PAY' style='float:right' />
+		</form>
+	</body>
+</html>

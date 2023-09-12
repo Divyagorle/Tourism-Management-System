@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tour Package Details</title>
+    <style>
+      /* Add styles for the page */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        width: 80%;
+		height:600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        box-shadow: 0 0 10px #ccc;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 36px;
+      }
+
+      .package-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .package-details h2 {
+        font-size: 24px;
+        margin: 0;
+      }
+
+      .package-details img {
+        height: 200px;
+        width: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 30px;
+      }
+
+      .package-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px;
+      }
+
+      .package-info p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .package-info .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: green;
+      }
+	  .form-submit {
+			  background-color: Orange;
+			  color: white;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  border: none;
+			  font-size: 16px;
+			  cursor: pointer;
+			  transition: all 0.2s ease-in-out;
+		}
+    .form-control {
+      display: block;
+      width: 30%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+  </head>
+  <body>
+	
+    <div class="container">
+      <!-- Add header -->
+      <h1>Tour Package Details</h1>
+
+      <!-- Add package details -->
+      <div class="package-details">
+        <!-- Add package image -->
+        <img src="{{url_for('static', filename='/packageimage/'+dt[7])}}" alt="Package Image">
+        
+        <!-- Add package info -->
+        <div class="package-info">
+          <!-- Add package name -->
+          <h2>{{dt[1]}}</h2>
+		  <h3>{{dt[2]}}</h3>
+		  <h3>Locations:{{dt[3]}}</h3>	
+		  <p><b>Features:</b>{{dt[5]}}</p><br>
+          <!-- Add package description -->
+          <p><b>Description:</b>{{dt[6]}}</p>
+
+          <!-- Add package price -->
+          <p class="price">Price:{{dt[4]}}/-</p>
+        </div>
+      </div>
+	  
+		{% if role=='admin'%}
+      <a href='/edit_tour_package/{{dt[0]}}' style='text-decoration:none;color:white' class='form-submit'>Edit</a><br>
+	  {% endif %}
+	</div>  
+	{% if role=='user' %}
+	<form action='/pay/{{dt[0]}}' method='POST' target='rframe'  >
+			<b>From Date:</b><input type='date' name='fromdate' id='date1' class='form-control' value="{{fromdate}}" required />
+			<b>Todate:</b><input type='date' name='todate' id='date2' class='form-control' value="{{todate}}" required />
+			<script>
+			  const date1Input = document.getElementById('date1');
+			  const date2Input = document.getElementById('date2');
+
+			  date1Input.addEventListener('input', compareDates);
+			  date2Input.addEventListener('input', compareDates);
+				function days(date1,date2)
+				{
+					const diffTime = Math.abs(date2 - date1);
+					return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+				}
+			  function compareDates() {
+				const date1 = new Date(date1Input.value);
+				const date2 = new Date(date2Input.value);
+				const button = document.getElementById('sub1');
+				if(date1.getTime() < date2.getTime()) && days(date1,date2)<=15)
+				{ 
+					button.disabled = true;
+				}
+				else
+				{	
+					button.disabled = false;
+				}
+			}
+			</script>
+			
+			<div class="container" style='height:120px'>
+				<h2><input type='checkbox' name='ck'  id='ck' required />Terms and Condition</h2>
+				<ol>
+					<li>Kindly Notice:Customer can get refund the money if cancel tour before the 7 days of start date of tour</li>
+					<li>Kindly Notice:Customer can get refund half of the money if cancel tour before the 3 days of start date of tour</li>
+					<li>Kindly Notice:Customer can't get refund money if cancel tour within the 3 days of start date of tour</li>
+				</ol>
+			</div>
+			<input type='submit' value='PAY' id='sub1' style='float:right' class='form-submit'/>
+	</form>
+	{% endif %}		
+  </body>
+</html>

@@ -1,0 +1,7 @@
+MYSQL DATABASE
+--------------
+host  = localhost
+username = root
+password = Avinash@123
+---------------------
+https://github.com/AvinashImmadisetty/Tourism-Management-System.git

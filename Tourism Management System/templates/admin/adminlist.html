@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Admins List</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style type='text/css'>
+		  table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .form-submit {
+      background-color: DodgerBlue;
+      color: Black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+		</style>
+	</head>
+	<body>
+		<h1>Admins Profiles</h1>
+		<table border='1px solid black'>
+			<tr>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Date Of Birth</th>
+				<th>Phone Number</th>
+				<th>Mail Id</th>
+				{% if name=='admin1' %}	
+				<th>Action</th>
+				{% endif %}
+			</tr>
+			{% for i in l %}
+			<tr>
+				{% for j in i %}
+					<td>{{j}}</td>
+				{% endfor%}
+				{% if name=='admin1' %}
+				<td><a href="/editadmin/{{i[-1]}}" style='text-decoration:none' target='rframe' /><i class="fa fa-edit"></i>Edit</a></td>
+				{% endif %}
+			</tr>
+			{% endfor%}
+		</table><br><br>
+		{% if name=='admin1' %}
+		<a href='/admin/registration' style='text-decoration:none;color:white;float:right' class='form-submit' target='rframe'>Create New Admin</a>
+		{% endif %}
+	</body>
+</html>

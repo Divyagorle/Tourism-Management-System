@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Admins List</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style type='text/css'>
+		  table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .form-submit {
+      background-color: Dodgerblue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+		</style>
+	</head>
+	<body>
+		<h1>Users Profiles</h1>
+		<table border='1px solid black'>
+			<tr>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Date Of Birth</th>
+				<th>Phone Number</th>
+				<th>Mail Id</th>
+				<th>Action</th>
+			</tr>
+			{% for i in l %}
+			<tr>
+				{% for j in i %}
+					<td>{{j}}</td>
+				{% endfor%}
+				<td><a href="/edituser/{{i[-1]}}" style='text-decoration:none' /><i class="fa fa-edit"></i>Edit<br>
+					<a href="/deleteuser/{{i[-1]}}" style='text-decoration:none' /><i class="material-icons" style='color:black'>&#xe872;</i>Delete</a></td>
+			</tr>
+			{% endfor%}
+		</table><br>
+		<a href='/user/registration' target='rframe' style='text-decoration:none;float:right' class='form-submit'>Create New User</a>
+	</body>
+</html>

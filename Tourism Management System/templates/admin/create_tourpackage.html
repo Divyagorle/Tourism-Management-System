@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Tour Package Creation</title>
+		<style>
+			input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+	  textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
+	  td{
+		font-weight: bold;
+	  }
+	  input[type="file"] {
+        display: block;
+        margin: 20px auto;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
+	  .form-submit {
+      background-color: Dodgerblue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+		</style>
+	</head>
+	<body>
+		<h1><center>Create Tour Package</center></h1>
+		<form action='/create_tour_package' method='POST' target='rframe'>
+			<table>
+				<tr>
+					<td>Package Name:<input type='text' name='pkname' /></td>
+				</tr>
+				<tr>
+					<td>Package Type:<input type='text' name='pktype' /></td>
+				</tr>
+				<tr>
+					<td>Package Locations:<input type='text' name='pklocation' /></td>
+				</tr>
+				<tr>
+					<td>Package Price:<input type='text' name='pkprice' /></td>
+				</tr>
+				<tr>
+					<td>Package Fetures:<textarea name='pkfetures' cols='100' rows='3'></textarea></td>
+				</tr>
+				<tr>
+					<td>Package Details:<textarea name='pkdetails' cols='100' rows='3'></textarea></td>
+				</tr>
+				<tr>
+					<td>Image:<input type='file' name='pkimage' /></td>
+				</tr>
+			</table>
+			<input type='submit' value='Create Package' style='float:right' class='form-submit' onclick="alert('Package Created Successfully')"/>
+		</form>
+	</body>
+</html>

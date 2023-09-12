@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Users List</title>
+	</head>
+	<body>
+		<h1>Users Profiles</h1>
+		<table border='1px solid black'>
+			<tr>
+				<th>Sl.No</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>Date Of Birth</th>
+				<th>Phone Number</th>
+				<th>Mail Id</th>
+				<th>Address</th>
+				<th>Action</th>
+			</tr>
+			{% for i in range(length) %}
+			<tr>
+				<td>{{i+1}}</td>
+				{% for j in range(1,8) %}
+					<td>{{l[i][j]}}</td>
+				{% endfor%}
+				<td><a href='/l[0][0]'>edit</a></td>
+			</tr>
+			{% endfor%}
+		</table>
+	</body>
+</html>

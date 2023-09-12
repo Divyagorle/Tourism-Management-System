@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Profile page</title>
+		<style type='text/css'>
+		  table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .form-submit {
+			  background-color: DodgerBlue;
+			  color: white;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  border: none;
+			  font-size: 16px;
+			  cursor: pointer;
+			  transition: all 0.2s ease-in-out;
+		}
+		</style>
+	</head>
+	<body>
+		<h1><center>Profile</center></h1>
+		<center>
+			<table border="1px solid black" width='500px' height='20px'>
+				<tr>
+					<th>Name:</th>
+					<td>{{dt[0]}}</td>
+				</tr
+				<tr>
+					<th>Gender:</th>
+					<td>{{dt[1]}}</td>
+				</tr>
+				<tr>
+					<th>Date of birth:</th>
+					<td>{{dt[2]}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number:</th>
+					<td>{{dt[3]}}</td>
+				</tr>
+				<tr>
+					<th>Mail Id:</th>
+					<td>{{dt[4]}}</td>
+				</tr>
+			</table>
+		</center><br>
+		<button align='center' style="float:right;" class='form-submit'><a href='/updateprofile' target='rframe' style="text-decoration:none;color:white;" />Edit Profile</a></button>
+	</body>
+</html>

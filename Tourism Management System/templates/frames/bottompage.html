@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<style>
+  .zoom-out-animation {
+    animation: zoom-out 1s;
+  }
+
+  @keyframes zoom-out {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+</style>
+ <body class="zoom-out-animation" style='background-color:LightGray'>
+ <center><h1>Welcome To Tourism Management System</h1>
+ <img class="zoom-out-animation" src="{{url_for('static', filename='/index.jpg')}}" alt="Your Image" width='1350px' height='350px'></center>
+    
+  </body>
+</html>

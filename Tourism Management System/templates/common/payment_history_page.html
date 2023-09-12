@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>Payment History</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0./css/font-awesome.min.css">
+		<style type='text/css'>
+		  table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .text-1 {
+    display: inline-block;
+    color: red;
+    animation: color-change 5s ease-in-out infinite;
+  }
+		@keyframes color-change {
+    0% {
+      color: red;
+    }
+    20% {
+      color: blue;
+    }
+	40% {
+      color: yellow;
+    }
+	60% {
+      color: orange;
+    }
+	80% {
+      color: black;
+    }
+    100% {
+      color: red;
+    }
+  }
+		</style>
+	</head>
+	<body>
+		<h1>Payment History</h1><hr>
+		<marquee><h3 class='text-1'>***Kindly Notice:Customer can get refund the money if cancel tour before the 7 days of start date of tour***<br>
+									***Kindly Notice:Customer can get refund half of the money if cancel tour before the 3 days of start date of tour***<br>
+									***Kindly Notice:Customer can't get refund money if cancel tour within the 3 days of start date of tour***
+		</h3></marquee><hr>
+		<table border='1px solid black'>
+			<tr>
+				<th>Payment Id</th>
+				<th>User Id</th>
+				<th>Package Id</th>
+				<th>Booked_on</th>
+				<th>From Date</th>
+				<th>To Date</th>
+				<th>Status</th>
+				<th>Actions</th>
+				<th>Invoive</th>
+			{% for i in l %}
+			<tr>
+				<td>{{i[0]}}</td>
+				<td>{{i[1]}}</td>
+				<td>{{i[2]}}</td>
+				<td>{{i[3]}}</td>
+				<td>{{i[4]}}</td>
+				<td>{{i[5]}}</td>
+				{% if i[6]=='active' %}
+				<td>
+					<span>&#128161;</span>{{i[6]}}
+				</td>
+				{% elif i[6] == 'pending' %}
+				<td>
+					<span>&#x1F551;</span>{{i[6]}}
+				</td>
+				{% elif i[6] == 'process' %}
+				<td>
+					<span>&#9867;</span>{{i[6]}}
+				</td>
+				{% elif i[6] == 'cancelled' %}
+				<td><span>&#10060;</span>{{i[6]}}</td>
+				{% else %}
+				<td><span>&#10003;</span>{{i[6]}}</td>
+				{% endif %}
+				{% if i[6]=='active' %}
+				<td>
+					<a href="/edit_tour_payment/{{i[0]}}" style='text-decoration:none' />Edit Tour </a><br>
+					<a href="/cancel_tour_payment/{{i[0]}}" style='text-decoration:none' onclick="alert('Money refund to your account successfully')" />Cancel Tour </a>
+				</td>
+				{% elif i[6] == 'pending' %}
+				<td>
+					<a href="/cancel_tour_payment/{{i[0]}}" style='text-decoration:none' onclick="alert('No money is refund')"/>Cancel Tour </a>
+				</td>
+				{% elif i[6] == 'process' %}
+				<td>
+					<a href="/edit_tour_payment/{{i[0]}}" style='text-decoration:none' />Edit Tour </a><br>
+					<a href="/cancel_tour_payment/{{i[0]}}" style='text-decoration:none' onclick="alert('Half Money refund to your account successfully')" />Cancel Tour </a>
+				</td>
+				{% else %}
+				<td>No Actions</td>
+				{% endif %}
+				<td><a href="/invoice/{{i[0]}}" style='text-decoration:none' /><i class="fa fa-file-pdf-o"></i>View Bill</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

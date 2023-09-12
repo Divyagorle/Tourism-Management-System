@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Registration Page</title>
+		<style type='text/css'>
+		  table {
+			width: 100%;
+			border-collapse: collapse;
+		  }
+		  
+		  th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: center;
+		  }
+		  
+		  th {
+			background-color: #f2f2f2;
+		  }
+		  .form-control {
+      display: block;
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+			.form-submit {
+			  background-color: DodgerBlue;
+			  color: white;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  border: none;
+			  font-size: 16px;
+			  cursor: pointer;
+			  transition: all 0.2s ease-in-out;
+		}
+    
+		</style>
+	</head>
+	<body>
+			<h1>Update Profile</h1>
+			<form action="/update/{{dt[4]}}" method="POST" target='rframe'>
+					<table>
+						<tr>
+							<th>Name:</th>
+							<td><input type='text' name='name' value="{{dt[0]}}" class='form-control' /></td>
+						</tr>
+						<tr>
+							<th>Gender:</th>
+							<td><input type='text' name='gender' value="{{dt[1]}}" placeholder='male/female' class='form-control'/></td>
+						</tr>
+						<tr>
+							<th>DOB:</th>
+							<td><input type='date' name='date_of_birth' value="{{dt[2]}}" class='form-control' required /></td>
+						</tr>
+						<tr>
+							<th>Phone number:</th>
+							<td><input type='text' name='phone_number' value="{{dt[3]}}" class='form-control'/></td>
+						</tr>
+						<tr>
+							<th>Mail Id:</th>
+							<td style="text-align:left">{{dt[4]}}</td>
+						</tr>
+					</table>
+					<input type='submit' value='UPDATE' style="float:right;" class='form-submit' onclick="alert('Profile Updated Successfully')"/>
+			</form>
+	</body>
+</html>

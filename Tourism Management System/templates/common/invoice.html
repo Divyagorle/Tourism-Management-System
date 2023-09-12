@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tourism Management System - Invoice</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		table td, table th {
+			border: 1px solid black;
+			padding: 8px;
+		}
+		th
+		{
+			text-align:right;
+		}
+		td
+		{
+			text-align:left;
+		}
+		table th {
+			background-color: #ccc;
+		}
+		.container {
+        width: 98%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+	  .logo {
+        width: 100px;
+        height: auto;
+        margin-left: 20px;
+      }
+	  h1
+	  {
+		text-align:center;
+	  }
+	</style>
+</head>
+<body>
+	<div class="container" style='border:1px solid black;'>
+        <img src="{{url_for('static', filename='/logo.jpg')}}" alt="Tourism Management System Logo" class="logo">
+		<h1>Tourism Management System - Invoice</h1>
+     </div>
+	 <br>
+	<table>
+		<tbody>
+			<tr>
+				<th>Transcation ID:</th>
+				<td>{{payid}}</td>
+			</tr>
+			<tr>
+				<th>status</th>
+				<td>{{status}}</td>
+			</tr>
+			<tr>
+				<th>UserName:</th>
+				<td>{{username}}</td>
+			</tr>
+			<tr>
+				<th>Package Name:</th>
+				<td>{{packagename}}</td>
+			</tr>
+			<tr>
+				<th>From Date:</th>
+				<td>{{fromdate}}</td>
+			</tr>
+			<tr>
+				<th>To Date:</th>
+				<td>{{todate}}</td>
+			</tr>
+			<tr>
+				<th>Price</th>
+				<td>{{price}}</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
